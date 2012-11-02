@@ -1,0 +1,606 @@
+
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="Keywords" content="四川大学教务处" />
+<meta name="description" content="四川大学教务处" />
+<meta name="generator" content="Macromedia Dreamweaver 8" />
+<meta name="author" content="李斌&黄源" />
+<title>四川大学教务处</title>
+<link href="css/www.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/themes/ui-lightness/jquery.ui.all.css">
+    <script src="js/show.js" type="text/javascript"></script>
+	<script src="js/jquery-1.4.4.js"></script>
+	<script src="js/ui/jquery.ui.core.js"></script>
+	<script src="js/ui/jquery.ui.widget.js"></script>
+	<script src="js/ui/jquery.ui.datepicker.js"></script>
+	<script src="js/ui/i18n/jquery.ui.datepicker-zh-TW.js"></script>
+<style type="text/css">
+<!--
+.STYLE3 {color: #FFFFFF; font-size: 14px; }
+a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+#datepicker a:link{
+	color: #777777;
+	text-decoration: none;
+}
+#datepicker a:visited {
+	text-decoration: none;
+	color: #777777;
+}
+#datepicker a:hover {
+	text-decoration: none;
+color: #777777;
+}
+#datepicker a:active {
+	text-decoration: none;
+color: #777777;
+}
+.STYLE4 {
+	color: #2E2E2E;
+	font-size: 12px;
+}
+.STYLE5 {
+	color: #077CC9;
+	font-size: 13px;
+}
+.STYLE6 {
+	font-size: 14px;
+}
+
+#Layer1 {
+	position:absolute;
+	width:60px;
+	height:120px;
+	z-index:1;
+	visibility: hidden;
+}
+.STYLE7 {color: #FFFFFF}
+-->
+</style>
+	<script language="javascript">
+<!--
+function cal_week(){
+	var date1=new Date();
+	var week1=$.datepicker.iso8601Week(date1);
+	var date2=$("#datepicker2").datepicker("getDate");
+	var week2=$.datepicker.iso8601Week(date2);
+	if (date2>date1)
+	{
+		$("#week_cu").text(0);
+	}
+	else{
+	$("#week_cu").text(week1-week2>0?week1-week2:week1-week2+52);
+	}
+}
+$(function() {
+		$( "#datepicker" ).datepicker({
+			hideIfNoPrevNext:true
+		});
+		$( "#datepicker2" ).datepicker({
+			dateFormat:"yy-mm-dd"
+		});
+		$( "#datepicker" ).datepicker($.datepicker.regional[ "zh-CN" ]);
+		cal_week();
+		/*$("#search_form").submit(function(){
+			if($("#key_word").val()==""){
+				alert("请输入关键字");
+				return false;
+			}
+			return true;
+		});*/
+	});
+function jumpMenu(targ,selObj,restore){
+	window.open(selObj.options[selObj.selectedIndex].value);
+}
+//-->
+</script>
+
+</head>
+
+<body  topmargin="0">
+
+
+
+
+<form action="searchAll.action" method="post" id="search_form">
+<script type="text/javascript">
+
+
+var isPause = false;
+
+
+var scrollImg = new Array();
+
+$.ajax({
+	url:"pictureNews.action",
+	cache:false,
+	dataType:"json",
+	success:function(data){
+		var string="";
+		var title="";
+		var path="";
+		for(var i=0;i<data.pictureList.length;i++){
+			string="newsShow.action?news.id="+data.pictureList[i].id;
+			title=data.pictureList[i].title;
+			path=data.pictureList[i].picture;
+			scrollImg[i]=new Array(string,title,path);
+		} 
+		ScrollPicShow(0,true);
+	}
+	
+});
+
+
+</script>
+
+<table width="960" height="25" align="center">
+<tr><td align="right" valign="bottom" class="STYLE6"><a target="_blank"  href="http://202.115.47.133"><font color="#000000">教务处网站旧版入口</font></a></td></tr>
+</table>
+
+
+
+<table width="960" height="160" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr>
+    <td width="960"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="960" height="160">
+      <param name="movie" value="medias/title.swf" />
+      <param name="quality" value="high" />
+      <embed src="medias/title.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="960" height="160"></embed>
+    </object></td>
+  </tr>
+</table>
+
+<table width="960" height="35" border="0" align="center" cellpadding="0" cellspacing="1" background="images/banner.jpg">
+  <tr>
+    <td width="120" align="center" valign="middle"><span class="STYLE3"><a href="frontPage.action">首页</a></span></td>
+    <td width="120" align="center" valign="middle"><span class="STYLE3"><a href="newsListShow.action?newsClass.id=1">部门介绍</a></span></td>
+    <td width="120" align="center" valign="middle"><span class="STYLE3"><a href="newsListShow.action?newsClass.id=2">办事指南</a></span></td>
+    <td width="120" align="center" valign="middle"><span class="STYLE3"><a href="newsListShow.action?newsClass.id=3">教改成果</a></span></td>
+    <td width="120" align="center" valign="middle"><span class="STYLE3"><a href="newsListShow.action?newsClass.id=4">教师园地</a></span></td>
+    <td width="120" align="center" valign="middle"><span class="STYLE3"><a href="newsListShow.action?newsClass.id=5">学生之窗</a></span></td>
+	<td width="120" align="center" valign="middle"><span class="STYLE3"><a href="newsListShow.action?newsClass.id=6">文件汇编</a></span></td>
+    <td width="120" align="center" valign="middle"><span class="STYLE3"><a href="newsListShow.action?newsClass.id=7">资料下载</a></span></td>
+  </tr>
+</table>
+
+<table width="974" height="750" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr>
+    <td width="260" height="35" align="right" valign="middle" class="STYLE5" background="images/time.jpg" style="background-repeat:no-repeat;cursor:hand" onClick="javascript:void(window.location.href='http://jwc.scu.edu.cn/jwc/xiaoli.jsp')" >第<span id="week_cu"></span>教学周&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td width="440" height="35" align="right"><img src="images/head1.jpg" width="440" height="35" border="0" usemap="#Map" /></td>
+    <td width="260" height="35" align="center">
+    
+    	<span style="font-size:13px;font-family:宋体">站内搜索<input type="text" name="keyWord" id="key_word"><input type="submit" value="搜索"></span>
+    
+    </td>
+  </tr>
+  <tr>
+    <td width="260" height="200" align="center"><div class="STYLE6" id="datepicker" style="font-size: 70%;"></div>
+    </td>
+    <td width="440" height="360" rowspan="2"  valign="top"><table width="440" border="0" align="center" cellpadding="0" cellspacing="1">
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1212" target="_blank"  title="点击数:1035"><span style="color:#2E2E2E;font-size:13px">&#22235;&#24029;&#22823;&#23398;2012&#24180;&#25512;&#20813;&#29983;&#34917;&#20805;&#21517;&#21333;&#20844;&#31034;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.31]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1210" target="_blank"  title="点击数:1479"><span style="color:#2E2E2E;font-size:13px">&#20851;&#20110;2012&#24180;&#31532;&#19977;&#23626;&#22235;&#24029;&#22823;&#23398;&#22823;&#23398;&#33521;&#35821;&#35821;&#35328;&#25216;&#33021;&#31454;&#36187;&#20915;&#36187;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.30]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1205" target="_blank"  title="点击数:1502"><span style="color:#2E2E2E;font-size:13px">&#20851;&#20110;&#36873;&#27966;2010&#12289;2011&#32423;&#26412;&#31185;&#29983;&#36212;&#32654;&#22269;&#22307;&#22320;&#20122;&#21733;&#24030;&#31435;&#22823;&#23398;-&#22269;&#38469;&#37202;&#24215;&#23454;&#20064;&#39033;&#30446;&#23398;&#20064;&#12289;&#23454;&#20064;&#30340;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.26]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1206" target="_blank"  title="点击数:2390"><span style="color:#2E2E2E;font-size:13px">&#20851;&#20110;2012&#24180;12&#26376;&#20840;&#22269;&#22823;&#23398;&#22806;&#35821;&#22235;&#12289;&#20845;&#32423;&#32771;&#35797;&#20934;&#32771;&#35777;&#21457;&#25918;&#12289;&#30456;&#29255;&#34917;&#29031;&#21450;&#19978;&#25253;&#30417;&#32771;&#20154;&#21592;&#30340;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.26]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1204" target="_blank"  title="点击数:1096"><span style="color:#2E2E2E;font-size:13px">&#20851;&#20110;&#36873;&#27966;2010&#12289;2011&#32423;&#26412;&#31185;&#29983;&#36212;&#32654;&#22269;&#22307;&#22320;&#20122;&#21733;&#24030;&#31435;&#22823;&#23398;-&#28023;&#27915;&#20844;&#22253;&#39033;&#30446;&#23398;&#20064;&#12289;&#23454;&#20064;&#30340;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.26]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1207" target="_blank"  title="点击数:2737"><span style="color:#2E2E2E;font-size:13px">&#22235;&#24029;&#22823;&#23398;2012&#24180;&#25512;&#20813;&#29983;&#34917;&#20805;&#21517;&#21333;&#20844;&#31034;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.26]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1208" target="_blank"  title="点击数:728"><span style="color:#2E2E2E;font-size:13px">&#20851;&#20110;&#22686;&#21152;&#26657;&#22253;&#20132;&#36890;&#36710;&#36816;&#34892;&#29677;&#27425;&#30340;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.26]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1201" target="_blank"  title="点击数:1817"><span style="color:#2E2E2E;font-size:13px">&#36716;&#21457;&#25945;&#32946;&#37096;&#20851;&#20110;&#20844;&#24067;&#26032;&#30340;&#26412;&#31185;&#19987;&#19994;&#30446;&#24405;&#21644;&#36827;&#34892;&#19987;&#19994;&#25972;&#29702;&#24037;&#20316;&#30340;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.24]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1202" target="_blank"  title="点击数:5748"><span style="color:#2E2E2E;font-size:13px">&#20851;&#20110;2012&#65293;2013&#23398;&#24180;&#65288;&#31179;&#65289;&#26399;&#20013;&#32771;&#35797;&#24037;&#20316;&#30340;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.24]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1203" target="_blank"  title="点击数:2137"><span style="color:#2E2E2E;font-size:13px">&#20851;&#20110;&#21484;&#24320;&#21152;&#25343;&#22823;&#39033;&#30446;&#23459;&#35762;&#20250;&#20197;&#21450;&#36873;&#27966;&#26412;&#31185;&#29983;2013&#24180;&#31179;&#36212;&#21152;&#30041;&#23398;&#30340;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.24]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1199" target="_blank"  title="点击数:1257"><span style="color:#2E2E2E;font-size:13px">&#20851;&#20110;&#31532;&#22235;&#23626;&#22235;&#24029;&#30465;&#23385;&#35757;&#26041;&#22823;&#23398;&#29983;&#21147;&#23398;&#31454;&#36187;&#25253;&#21517;&#30340;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.23]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1200" target="_blank"  title="点击数:6114"><span style="color:#2E2E2E;font-size:13px">&#22235;&#24029;&#22823;&#23398;2012&#24180;&#25512;&#20813;&#29983;&#21517;&#21333;&#20844;&#31034;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.23]</font></td>
+		      </tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1196" target="_blank"  title="点击数:1944"><span style="color:#2E2E2E;font-size:13px">&#20851;&#20110;&#36873;&#25300;2010&#32423;&#26412;&#31185;&#23398;&#29983;&#36212;&#32654;&#22269;&#21152;&#24030;&#22823;&#23398;&#27931;&#26441;&#30710;&#20998;&#26657;&#65288;UCLA&#65289;&#36827;&#34892;&#26257;&#26399;&#30740;&#20462;&#30340;&#36890;&#30693;</span></a></span></td>
+		        <td width="70" align="left" height="20" class="STYLE4" valign="bottom">
+				<font color="#999999">&nbsp;[2012.10.22]</font></td>
+		      </tr>
+    	
+    </table></td>
+	
+    <td width="260" height="360" rowspan="2"  style="background:url(images/picnews.jpg) no-repeat;">
+	<p><p><p>
+<div id="wwwindex_scrollpic_1" style="OVERFLOW: hidden; WIDTH: 260px; HEIGHT: 280px; align: center;" >
+
+
+	<p align="center">
+
+
+		<a id="ScrollUrl" href="#" target="_blank">
+
+
+			<img alt="" id="ScrollImg" src="images/loading39.gif" width="100px" height="100px" style=" WIDTH: 240px; HEIGHT: 180px; margin: 2px 0px; border: 0px; filter: revealTrans(duration=1,transition=5);" /></a>
+
+
+
+		
+
+
+	</p>
+	<p style="height:20px;" align="center">
+		<a href="#" id="ScrollTxtUrl" target="_blank" >
+
+
+				<span id="ScrollTxt" style="color:black;font-size:9pt;"></span>
+
+
+			</a>
+	</p>
+
+	<dl style="float: right; margin-bottom:1px; margin-top:5px; margin-right:8px;font-size:9pt;">
+
+
+		<dd style="width: 100px; height: 17px;line-height:17px; float: left; margin-left: 1px; text-align: center;background-color: #ececec;color: #000000;">
+</dd>
+
+
+		<dd style="width: 26px; height: 17px;line-height:17px; float: left; margin-left: 1px; text-align: center;" id="ScrollDiv0" class="ScrollButton0" onClick="PauseScroll(0)">
+
+
+			1</dd>
+
+
+		<dd style="width: 26px; height: 17px;line-height:17px; float: left; margin-left: 2px; text-align: center;" id="ScrollDiv1" class="ScrollButton0"  onclick="PauseScroll(1)">
+
+
+			2</dd>
+
+
+		<dd style="width: 26px; height: 17px;line-height:17px; float: left; margin-left: 2px; text-align: center;" id="ScrollDiv2" class="ScrollButton0"  onclick="PauseScroll(2)">
+
+
+			3</dd>
+
+
+		<dd style="width: 26px; height: 17px;line-height:17px; float: left; margin-left: 2px; text-align: center;" id="ScrollDiv3" class="ScrollButton0"  onclick="PauseScroll(3)">
+
+
+			4</dd>
+
+
+		<dd style="width: 26px; height: 17px;line-height:17px; float: left; margin-left: 2px; text-align: center;" id="ScrollDiv4" class="ScrollButton0"  onclick="PauseScroll(4)">
+
+
+			5</dd>
+
+
+
+	</dl>
+
+	
+
+</div>
+	</td>
+  </tr>
+  <tr>
+    <td width="260" height="160" valign="top" background="images/mangement.jpg"><table width="260" border="0">
+      <tr>
+        <td width="260" height="40"><img src="images/yunxingguanlitop.jpg" width="255" height="40" border="0" usemap="#Map7" /></td>
+      </tr>
+      <tr>
+        <td height="90"><table width="240" height="94" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+        <td height="30" align="center" valign="middle" class="STYLE6"><a href="newsListShow.action?newsClass.id=203"><font color="#2E2E2E">教学运行</font></a></td>
+        <td align="center" valign="middle" class="STYLE6"><a href="newsListShow.action?newsClass.id=204"><font color="#2E2E2E">考试管理</font></a></td>
+      </tr>
+      <tr>
+        <td height="30" align="center" valign="middle" class="STYLE6"><a href="newsListShow.action?newsClass.id=205"><font color="#2E2E2E">教师进修</font></a></td>
+        <td align="center" valign="middle" class="STYLE6"><a href="newsListShow.action?newsClass.id=206"><font color="#2E2E2E">学籍管理</font></a></td>
+      </tr>
+      <tr>
+        <td height="30" align="center" valign="middle" class="STYLE6"><a href="newsListShow.action?newsClass.id=207"><font color="#2E2E2E">合作与交流</font></a></td>
+        <td height="30" align="center" valign="middle" class="STYLE6"><a href="http://202.115.47.189/fxweb/fuxiu/"><font color="#2E2E2E">第二专业</font></a></td>
+      </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td width="260" height="35" align="center" bordercolor="#FFFFFF" background="images/time2.jpg" class="STYLE6"><a href="xiaoche.jsp"><font color="#2E2E2E">四川大学校车时刻表</font></a></td>
+    <td width="440" height="35" align="right"><img src="images/head2.jpg" width="440" height="35" border="0" usemap="#Map2" /></td>
+    <td width="260" height="35"><img src="images/study.jpg" alt="待定" name="xueshu" width="260" height="35" id="xueshu" /></td>
+  </tr>
+  
+  <tr>
+    <td width="260" height="320" rowspan="2" valign="top" background="images/fuction.jpg"><table width="260" border="0">
+      <tr>
+        <td width="260" height="40"><img src="images/jiaoyanjiaoxuetop.jpg" width="255" height="40" border="0" usemap="#Map8" /></td>
+      </tr>
+      <tr>
+        <td><table width="240" height="226" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+        <td width="60" height="24"><img src="images/icon.jpg" width="60" height="23" /></td>
+        <td width="180" height="24" class="STYLE6"><a href="newsListShow.action?newsClass.id=91"><font color="#2E2E2E">教学改革</font></a></td>
+      </tr>
+      <tr>
+        <td width="60" height="24"><img src="images/icon.jpg" width="60" height="23" /></td>
+        <td width="180" height="24" class="STYLE6"><a href="newsListShow.action?newsClass.id=93"><font color="#2E2E2E">人才培养</font></a></td>
+      </tr>
+      <tr>
+        <td width="60" height="24"><img src="images/icon.jpg" width="60" height="23" /></td>
+        <td width="180" height="24" class="STYLE6"><a href="newsListShow.action?newsClass.id=95"><font color="#2E2E2E">质量工程一期</font></a></td>
+      </tr>
+      <tr>
+        <td width="60" height="24"><img src="images/icon.jpg" width="60" height="23" /></td>
+        <td width="180" height="24" class="STYLE6"><a href="newsListShow.action?newsClass.id=96"><font color="#2E2E2E">质量工程二期</font></a></td>
+      </tr>
+      <tr>
+        <td width="60" height="24"><img src="images/icon.jpg" width="60" height="23" /></td>
+        <td width="180" height="24" class="STYLE6"><a href="newsListShow.action?newsClass.id=99"><font color="#2E2E2E">教材建设</font></a></td>
+      </tr>
+      <tr>
+        <td width="60" height="24"><img src="images/icon.jpg" width="60" height="23" /></td>
+        <td width="180" height="24" class="STYLE6"><a href="newsListShow.action?newsClass.id=97"><font color="#2E2E2E">教学指导委员会</font></a></td>
+      </tr>
+      <tr>
+        <td width="60" height="24"><img src="images/icon.jpg" width="60" height="23" /></td>
+        <td width="180" height="24" class="STYLE6"><a href="newsListShow.action?newsClass.id=94"><font color="#2E2E2E">专业建设</font></a></td>
+      </tr>
+      <tr>
+        <td width="60" height="24"><img src="images/icon.jpg" width="60" height="23" /></td>
+        <td width="180" height="24" class="STYLE6"><a href="newsListShow.action?newsClass.id=98"><font color="#2E2E2E">教风学风建设</font></a></td>
+      </tr>
+      <tr>
+        <td width="60" height="24"><img src="images/icon.jpg" width="60" height="24" /></td>
+        <td width="180" height="24" class="STYLE6"><a href="newsListShow.action?newsClass.id=92"><font color="#2E2E2E">实践教学</font></a></td>
+      </tr>
+        </table></td>
+      </tr>
+    </table>        </td>
+    <td width="440" height="320" rowspan="2"  valign="top"><table width="440" border="0" align="center" cellpadding="0" cellspacing="1">
+      
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1213" target="_blank" title="点击数:74"><span style="color:#2E2E2E;font-size:13px">&#22235;&#24029;&#22823;&#23398;2012&#24180;&#31179;&#23395;&#23398;&#26399;&#19987;&#19994;&#22522;&#30784;&#35838;&#30740;&#31350;&#29983;&#21161;&#25945;&#25307;&#32856;&#21551;&#20107;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.11.01]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1209" target="_blank" title="点击数:72"><span style="color:#2E2E2E;font-size:13px">&#24544;&#23454;&#20570;&#25945;&#23398; &#35802;&#24691;&#24453;&#24072;&#29983;&mdash;&mdash;&#22235;&#24029;&#22823;&#23398;&#25945;&#21153;&#22788;&#25166;&#23454;&#25512;&#36827;&#37096;&#38376;&#25991;&#21270;&#24314;&#35774;&#19982;&#20316;&#39118;&#24314;&#35774;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.10.30]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1211" target="_blank" title="点击数:146"><span style="color:#2E2E2E;font-size:13px">&#21608;&#40718;&#32769;&#24072;&#36208;&#36827;&#22235;&#24029;&#22823;&#23398;&#20154;&#25991;&#22823;&#35762;&#22530;&#65288;&#31532;&#19977;&#21313;&#20845;&#35762;&#65289;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.10.30]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1195" target="_blank" title="点击数:312"><span style="color:#2E2E2E;font-size:13px">&ldquo;&#31532;&#19971;&#23626;&#20449;&#24687;&#25216;&#26415;&#24212;&#29992;&#27700;&#24179;&#22823;&#36187;&#21517;&#20225;&#26657;&#22253;&#34892;&rdquo;&#27963;&#21160;&#22312;&#25105;&#26657;&#20030;&#34892;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.10.19]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1185" target="_blank" title="点击数:20"><span style="color:#2E2E2E;font-size:13px">&#21016;&#33688;&#25945;&#25480;&#36208;&#36827;&#22235;&#24029;&#22823;&#23398;&#20154;&#25991;&#22823;&#35762;&#22530;(&#31532;&#19977;&#21313;&#20116;&#35762;)</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.10.17]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1172" target="_blank" title="点击数:762"><span style="color:#2E2E2E;font-size:13px">&ldquo;&#33883;&#23567;&#20339;&#20248;&#31168;&#35770;&#25991;&#22870;&rdquo;&#39041;&#22870;&#20856;&#31036;&#38534;&#37325;&#20030;&#34892;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.10.10]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1164" target="_blank" title="点击数:562"><span style="color:#2E2E2E;font-size:13px">&#22235;&#24029;&#22823;&#23398;&#38534;&#37325;&#21484;&#24320;2012&#24180;&#26412;&#31185;&#25945;&#23398;&#24037;&#20316;&#20250;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.09.29]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1166" target="_blank" title="点击数:316"><span style="color:#2E2E2E;font-size:13px">&#39318;&#26399;&ldquo;&#35838;&#31243;&#20013;&#24515;&rdquo;&#25945;&#24072;&#22521;&#35757;&#22278;&#28385;&#32467;&#26463;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.09.29]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1152" target="_blank" title="点击数:452"><span style="color:#2E2E2E;font-size:13px">2012-2013&#23398;&#24180;&#19978;&#26399;&#28023;&#22806;&#25991;&#21270;&#31995;&#21015;&#35762;&#24231;&#24320;&#35762;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.09.27]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1149" target="_blank" title="点击数:683"><span style="color:#2E2E2E;font-size:13px">&#23004;&#26195;&#33805;&#25945;&#25480;&#36208;&#36827;&#22235;&#24029;&#22823;&#23398;&#20154;&#25991;&#22823;&#35762;&#22530;&#65288;&#31532;&#19977;&#21313;&#22235;&#35762;&#65289;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.09.25]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1118" target="_blank" title="点击数:1043"><span style="color:#2E2E2E;font-size:13px">&#26657;&#38271;&#35874;&#21644;&#24179;&#38498;&#22763;&#26816;&#26597;&#27743;&#23433;&#26657;&#21306;&#25945;&#23398;&#36816;&#34892;&#24773;&#20917;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.09.18]</font></td></tr>
+    	
+    		<tr>
+		        <td width="370" valign="bottom"><span class="STYLE4"><img src="images/arrow_02.gif" border="0">&nbsp;<a href="newsShow.action?news.id=1119" target="_blank" title="点击数:681"><span style="color:#2E2E2E;font-size:13px">&#26657;&#20826;&#22996;&#20070;&#35760;&#26472;&#27849;&#26126;&#25945;&#25480;&#36212;&#27743;&#23433;&#26657;&#21306;&#21548;&#35838;&#35843;&#30740;</span></a></span></td>
+		        <td width="70" align="left" valign="bottom" height="20" class="STYLE4">
+				<font color="#999999">&nbsp;[2012.09.18]</font></td></tr>
+    	
+  
+      
+    </table></td>
+    <td width="260" height="159"><img src="images/login.jpg" width="260" height="160" border="0" usemap="#Map4" /></td>
+  </tr>
+  <tr>
+    <td width="260" height="160"><img src="images/study1.jpg" width="260" height="160" border="0" usemap="#Map6" /></td>
+  </tr>
+</table>
+
+<table width="970" height="200" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr>
+    <td width="260" height="200" rowspan="2"><a href="#"></a>
+      <table width="260" border="0" cellspacing="1" cellpadding="0">
+        <tr>
+          <td width="260" height="35"><a href="newsListShow.action?newsClass.id=12"><img src="images/lianjie.jpg" width="260" height="35" border="0" /></a></td>
+        </tr>
+        <tr>
+          <td width="260" height="130"><a href="newsListShow.action?newsClass.id=283"><img src="images/party.jpg" width="260" height="130" border="0"/></a> 
+          </td>
+        </tr>
+        <tr>
+          <td width="260" height="35"><a href="mailto:jwc@scu.edu.cn"><img src="images/mail.jpg" width="260" height="35" border="0" /></a></td>
+        </tr>
+      </table>      
+      <a href="#"></a></td>
+    <td width="440" height="35"><img src="images/head3.jpg" width="440" height="35" border="0" usemap="#Map3" /></td>
+    <td width="260" height="35" align="center" valign="bottom">
+      <p><span class="STYLE6">友情链接：</span>
+          <select name="menu1" onChange="jumpMenu('parent',this,0)">
+            <option value="http://www.moe.edu.cn/">教育部网站</option>
+            <option value="http://www.scedu.net/structure/index.htm">四川省教育厅</option>
+            <option value="http://www.tsinghua.edu.cn/publish/th/index.html">清华大学网站</option>
+            <option value="http://www.pku.edu.cn/">北京大学</option>
+            <option value="http://www.zju.edu.cn/">浙江大学网站</option>
+            <option value="http://www.fudan.edu.cn/">复旦大学</option>
+	    <option value="http://www.nju.edu.cn/cps/site/newweb/foreground/">南京大学</option>
+          </select>
+
+        </p>
+          
+    <a href="#"></a></td>
+  </tr>
+  <tr>
+    <td width="440" height="165"><img src="images/link.jpg" width="440" height="165" border="0" usemap="#Map5" /></td>
+    <td width="260" height="163" valign="top" background="images/answer.jpg"><table width="260" border="0">
+      <tr>
+        <td width="260" height="40"><img src="images/zhengcijiedatop.jpg" width="255" height="40" border="0" usemap="#Map9" /></td>
+      </tr>
+      <tr>
+        <td height="100" valign="middle"><table width="255" height="100" border="0" align="center" cellpadding="0" cellspacing="1">
+          <tr>
+        <td width="130" align="center" class="STYLE6"><a href="newsListShow.action?newsClass.id=264"><font color="#2E2E2E">综合服务</font></a></td>
+        <td width="130" align="center" class="STYLE6"><a href="newsListShow.action?newsClass.id=265"><font color="#2E2E2E">人才培养</font></a></td>
+      </tr>
+      <tr>
+        <td width="130" align="center" class="STYLE6"><a href="newsListShow.action?newsClass.id=266"><font color="#2E2E2E">运行管理</font></a></td>
+        <td width="130" align="center" class="STYLE6"><a href="newsListShow.action?newsClass.id=267"><font color="#2E2E2E">学籍管理</font></a></td>
+      </tr>
+      <tr>
+        <td width="130" align="center" class="STYLE6"><a href="newsListShow.action?newsClass.id=268"><font color="#2E2E2E">实践教学</font></a></td>
+        <td width="130" align="center" class="STYLE6"><a href="newsListShow.action?newsClass.id=269"><font color="#2E2E2E">合作交流</font></a></td>
+      </tr>
+      <tr>
+        <td width="130" align="center" class="STYLE6"><a href="newsListShow.action?newsClass.id=270"><font color="#2E2E2E">质量评价</font></a></td>
+        <td width="130" align="center" class="STYLE6"><a href="newsListShow.action?newsClass.id=284"><font color="#2E2E2E">考试管理</font></a></td>
+      </tr>
+    </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="960" height="35" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr>
+    <td width="960" height="35" align="center" background="images/button.jpg" class="STYLE3">四川大学教务处 版权所有</td>
+  </tr>
+</table>
+
+<table width="960" height="30" border="0" align="center" cellpadding="0" cellspacing="1">
+  <tr>
+    <td width="960" align="center" valign="middle"><p class="STYLE5">&nbsp;</p>
+      <p align="left" class="STYLE6">    <span class="STYLE7">---------------------------------------------</span>地址：（望江校区）成都市一环路南一段24号 川大行政楼219、220办公室 邮编：610065</p>
+<p align="left" class="STYLE6"> <span class="STYLE7">-----------------------------------------------------</span>（江安校区）成都市双流县川大路     川大行政楼一楼           邮编：610207</p>
+<p align="left" class="STYLE6">    <span class="STYLE7">-----------------------------------------------------</span>（华西校区）成都市人民南路三段17号 华西行政楼232           邮编：610041</p>
+    <p class="STYLE6"></p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div style="display:none"><input type="text" id="datepicker2" value="2012-09-02"/></div>
+
+</form>
+<map name="Map" id="Map">
+<area shape="rect" coords="397,13,428,25" href="moreNotice.action" />
+</map>
+<map name="Map2" id="Map2">
+<area shape="rect" coords="392,11,432,25" href="moreNews.action" />
+</map>
+<map name="Map4" id="Map4">
+<area shape="rect" coords="52,25,211,41" href="http://jwc.scu.edu.cn/jwc/xk/xsxk.html" /><area shape="rect" coords="50,56,215,72" href="http://202.115.47.141" /><area shape="rect" coords="39,88,228,102" href="international" />
+<area shape="rect" coords="52,119,211,135" href="#" />
+</map>
+<map name="Map6" id="Map6">
+  <area shape="rect" coords="49,31,226,52" href="newsListShow.action?newsClass.id=253" />
+<area shape="rect" coords="47,56,229,77" href="newsListShow.action?newsClass.id=254" /><area shape="rect" coords="48,81,230,97" href="newsListShow.action?newsClass.id=255" />
+<area shape="rect" coords="47,104,231,122" href="newsListShow.action?newsClass.id=256" /><area shape="rect" coords="47,128,229,145" href="newsListShow.action?newsClass.id=257" /></map>
+<map name="Map3" id="Map3"><area shape="rect" coords="395,10,431,25" href="#" /></map>
+<map name="Map5" id="Map5"><area shape="rect" coords="19,22,150,59" href="#" /><area shape="rect" coords="157,25,287,59" href="#" /><area shape="rect" coords="296,25,427,59" href="http://202.115.47.189/cxb/test/index.php" target="_blank"/><area shape="rect" coords="296,65,427,101" href="#" /><area shape="rect" coords="155,65,290,101" href="#" /><area shape="rect" coords="19,65,149,99" href="http://202.115.44.204/" /><area shape="rect" coords="17,106,150,144" href="http://drc.scu.edu.cn/" /><area shape="rect" coords="157,107,288,141" href="http://metc.scu.edu.cn" target="_blank" /><area shape="rect" coords="296,108,427,142" href="http://www.dxs5.com" /></map></body>
+<map name="Map7" id="Map7">
+  <area shape="rect" coords="57,13,128,33" href="newsListShow.action?newsClass.id=9" />
+</map>
+
+<map name="Map8" id="Map8">
+  <area shape="rect" coords="58,13,127,32" href="newsListShow.action?newsClass.id=8" />
+</map>
+
+<map name="Map9" id="Map9">
+  <area shape="rect" coords="93,10,165,30" href="newsListShow.action?newsClass.id=10" />
+</map>
+</html>

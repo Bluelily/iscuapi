@@ -1,0 +1,21 @@
+{
+  "name": "iscuapi",
+  "version": "0.0.1",
+  "private": true,
+  "script": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "3.0.0",
+    "jade": "*",
+    "stylus": "*",
+    "bufferhelper": "*",
+    "mongoose": "3.x",
+    "underscore": "*",
+    "underscore.string": "*",
+    "async": "*",
+    "entities": "*",
+    "iconv": "*",
+    "jquery": "*"
+  }
+}
